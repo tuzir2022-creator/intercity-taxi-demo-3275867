@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Межгород · Демо для междугороднего такси</title>
+<meta name="description" content="Укажите, откуда и куда хотите поехать. Добавьте дату и число пассажиров, чтобы согласовать поездку.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Из города в город">
+<meta property="og:description" content="Укажите, откуда и куда хотите поехать. Добавьте дату и число пассажиров, чтобы согласовать поездку.">
+<meta property="og:image" content="assets/road.webp">
+<link rel="preload" as="image" href="assets/road.webp" fetchpriority="high">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%276%27 y=%276%27 width=%2720%27 height=%2720%27 rx=%275%27 fill=%27%23e9b872%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root { --c-canvas: #172033; --c-surface: #1f2a40; --c-ink: #f3eee2; --c-ink-soft: #b3ad9f; --c-accent: #e9b872; --c-accent-ink: #1a1408; --c-accent-deep: #e9b872; --f-display: "Golos Text", "Arial", system-ui, sans-serif; --f-text: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; --h1k: 1; }
+</style>
+<link rel="stylesheet" href="style-prod.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="taxi.css">
+</head>
+<body class="s-prod" id="top">
+<header class="s-bar" data-s-bar>
+  <a class="s-bar__brand" href="#top"><i aria-hidden="true"></i>Межгород</a>
+  <div class="s-bar__right">
+    <span class="demo-label">Демо сайта</span>
+    <a class="s-btn s-btn--sm" href="#widget">Указать маршрут</a>
+  </div>
+</header>
+<main>
+  <section class="s-hero">
+    <div class="s-hero__text">
+      <p class="s-eyebrow">Междугороднее такси</p>
+      <h1>Из города в город</h1>
+      <p class="s-lead">Укажите, откуда и куда хотите поехать. Добавьте дату и число пассажиров, чтобы согласовать поездку.</p>
+      
+      
+      
+    </div>
+    <div class="s-hero__widget" id="widget"><form class="s-widget trip" id="trip" aria-labelledby="trip-title">
+      <h2 class="s-widget__title" id="trip-title">Ваш маршрут</h2>
+      <div class="trip-points">
+        <label>Откуда <input name="from" required maxlength="80" placeholder="Город отправления"></label>
+        <button type="button" class="trip-swap" aria-label="Поменять города местами" title="Поменять города местами">⇄</button>
+        <label>Куда <input name="to" required maxlength="80" placeholder="Город назначения"></label>
+      </div>
+      <div class="trip-extra">
+        <label>Дата <input name="date" type="date" required></label>
+        <label>Пассажиры <select name="passengers" aria-label="Число пассажиров">
+          <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+        </select></label>
+      </div>
+      <label>Комментарий <input name="note" maxlength="160" placeholder="Багаж, остановки, пожелания"></label>
+      <button class="s-btn trip-submit" type="submit">Подготовить заявку <span aria-hidden="true">↗</span></button>
+      <p class="trip-note">Демо. Форма показывает черновик без отправки.</p>
+      <div class="trip-result" hidden>
+        <label for="trip-message">Черновик заявки</label>
+        <textarea id="trip-message" rows="4" readonly></textarea>
+        <button class="s-btn s-btn--ghost" type="button" id="trip-copy">Скопировать текст</button>
+      </div>
+      <p role="status" class="trip-status" id="trip-status"></p>
+    </form></div>
+    <figure class="s-hero__bg">
+    <img src="assets/road.webp" alt="" fetchpriority="high" decoding="async">
+    <figcaption>Стоковое фото · <a href="https://unsplash.com/photos/jmqjrhnELTk">Edoardo Giudici Saraval / Unsplash</a></figcaption>
+  </figure>
+  </section>
+
+  
+
+  <section class="s-section s-reveal" id="prices">
+    <header class="s-section__head"><h2>Примеры маршрутов</h2><p>Выберите маршрут, чтобы подставить города в форму.</p></header>
+    <ul class="route-list">
+      <li><button type="button" data-from="Самара" data-to="Тольятти">Самара <span aria-hidden="true">→</span> Тольятти</button></li>
+      <li><button type="button" data-from="Самара" data-to="Казань">Самара <span aria-hidden="true">→</span> Казань</button></li>
+      <li><button type="button" data-from="Казань" data-to="Ульяновск">Казань <span aria-hidden="true">→</span> Ульяновск</button></li>
+    </ul>
+    
+  </section>
+
+  <section class="s-section s-reveal">
+    <header class="s-section__head"><h2>Как заказать поездку</h2></header>
+    <ol class="s-steps">
+      <li class="s-steps__item"><span class="s-steps__n">01</span><h3>Укажите маршрут</h3><p>Откуда забрать, куда ехать и на какую дату планируете поездку.</p></li>
+      <li class="s-steps__item"><span class="s-steps__n">02</span><h3>Согласуйте детали</h3><p>Заранее уточните адрес подачи, время и стоимость.</p></li>
+      <li class="s-steps__item"><span class="s-steps__n">03</span><h3>Подготовьтесь к выезду</h3><p>Сообщите о багаже, детском кресле или других пожеланиях при заказе.</p></li>
+    </ol>
+  </section>
+
+  
+
+  <section class="s-section trip-photo" aria-label="Фото поездки">
+    <figure><img src="assets/interior.webp" alt="Вид на дорогу из салона автомобиля" loading="lazy" decoding="async">
+    <figcaption>Стоковое фото · <a href="https://unsplash.com/photos/U4_HU6JGUZY">Sean Thoman / Unsplash</a></figcaption></figure>
+    <div><h2>О чём договориться до выезда</h2>
+    <p>Если едете в аэропорт или на вокзал, сообщите время вылета или отправления. Это поможет согласовать подачу с учётом дороги.</p>
+    <a href="#widget">Перейти к маршруту <span aria-hidden="true">↗</span></a></div>
+  </section>
+
+  
+
+  <section class="s-section s-reveal">
+    <header class="s-section__head"><h2>Частые вопросы</h2></header>
+    <div class="s-faq"><details><summary>Можно ли указать свой маршрут?</summary><p>Да. Поля «Откуда» и «Куда» можно заполнить вручную.</p></details><details><summary>Как узнать стоимость?</summary><p>Для расчёта нужны маршрут, дата и детали поездки. В демонстрации тарифы не указаны.</p></details><details><summary>Что делать, если нужен заезд по пути?</summary><p>Укажите промежуточную остановку в комментарии. В рабочей версии её можно будет согласовать с диспетчером.</p></details></div>
+  </section>
+
+  <section class="s-section s-final" id="contacts">
+    <header class="s-section__head"><h2>Соберите свою поездку</h2></header>
+    <a class="s-btn" href="#widget">Указать маршрут</a>
+  </section>
+</main>
+<footer class="s-foot"><p>Межгород · демонстрационный сайт</p><p>Города приведены для примера</p></footer>
+<nav class="s-dock" aria-label="Быстрая связь"><a class="s-btn" href="#widget">Указать маршрут</a></nav>
+<script src="style.js" defer></script>
+<script src="taxi.js" defer></script>
+</body>
+</html>
